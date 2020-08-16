@@ -1,24 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+
+import ToDo from './ToDo/ToDo';
+import CreateToDo from './CreateToDo/CreateToDo'
+
 import './App.css';
 
 function App() {
+
+  const emptyArray: any[] = [];
+  const [todoList, setTodoList] = useState(emptyArray);
+
+  const newTodo = (name: string, description: string) => {
+    const newArr = todoList.slice();
+    newArr.push({name, description});
+    setTodoList(newArr);
+  }
+
+  const deleteTodo = (i: number) => {
+    const newArr = todoList.slice();
+    newArr.splice(i, 1);
+    setTodoList(newArr)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App container">
+      <CreateToDo onNewToDo={newTodo} />
+      {todoList.map((item, index) => <ToDo index={index} key={index} name={item.name} description={item.description} onDelete={deleteTodo} />)}
     </div>
   );
 }

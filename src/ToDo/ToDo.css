@@ -1,0 +1,13 @@
+.todo {
+    text-align: center;
+}
+.name {
+    font-size: 150%;
+    margin-bottom: 1px;
+}
+.description {
+    font-size: 125%;
+}
+.todo-delete {
+    left: 80%;
+}
