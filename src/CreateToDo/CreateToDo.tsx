@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, memo } from 'react';
 
 type Props = {
     onNewToDo: any
@@ -26,4 +26,4 @@ function CreateToDo(props: Props) {
     );
 }
 
-export default CreateToDo;
+export default memo(CreateToDo);

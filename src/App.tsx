@@ -19,12 +19,14 @@ function App() {
   const deleteTodo = (i: number) => {
     const newArr = todoList.slice();
     newArr.splice(i, 1);
-    setTodoList(newArr)
+    setTodoList(newArr);
   }
 
   return (
     <div className="App container">
       <CreateToDo onNewToDo={newTodo} />
+      <hr />
+      <h2>ToDos:</h2>
       {todoList.map((item, index) => <ToDo index={index} key={index} name={item.name} description={item.description} onDelete={deleteTodo} />)}
     </div>
   );
